@@ -1,3 +1,5 @@
+import { useCategory } from "./contexts/CategoryContext";
+import { useEffect } from "react";
 import { useState } from "react";
 import sportsIconUrl from "../assets/design-assets/svg-icons/SPORTS.svg";
 import faveIconUrl from "../assets/design-assets/svg-icons/FAVE.svg";
@@ -7,14 +9,24 @@ import cashierIconUrl from "../assets/design-assets/svg-icons/CASHIER.svg";
 
 const FOOTER_LIST = [
   { title: "SPORTS", iconUrl: sportsIconUrl },
-  { title: "FAVORITES", iconUrl: faveIconUrl },
+  { title: "Favorites", iconUrl: faveIconUrl }, 
   { title: "INVITE", iconUrl: inviteIconUrl },
   { title: "CASINO LIVE", iconUrl: liveIconUrl },
   { title: "CASHIER", iconUrl: cashierIconUrl },
 ];
 
 const Footer = () => {
-  const [activeItem, setActiveItem] = useState<string | null>(null);
+  const { activeCategory, setActiveCategory } = useCategory();
+  const [activeItem, setActiveItem] = useState<string | null>(activeCategory);
+
+  useEffect(() => {
+    setActiveItem(activeCategory);
+  }, [activeCategory]);
+
+  const handleClick = (title: string) => {
+    setActiveItem(title);
+    setActiveCategory(title);
+  };
 
   return (
     <footer className="sticky-bottom bg-white py-2 shadow-sm">
@@ -35,7 +47,7 @@ const Footer = () => {
               >
                 <button
                   type="button"
-                  onClick={() => setActiveItem(item.title)}
+                  onClick={() => handleClick(item.title)}
                   className="btn p-2 d-flex flex-column align-items-center"
                   style={{
                     backgroundColor: "white",

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, FC, ReactNode } from "react";
+import { createContext, useContext, useState, FC, ReactNode, useEffect } from "react";
 
 interface CategoryContextType {
   activeCategory: string | null;
@@ -10,12 +10,12 @@ interface CategoryContextType {
   isFilterModalOpen: boolean;
   setIsFilterModalOpen: (isOpen: boolean) => void;
   activeProviders: string[];
-  setActiveProviders: React.Dispatch<React.SetStateAction<string[]>>; 
+  setActiveProviders: React.Dispatch<React.SetStateAction<string[]>>;
+  favoriteGameIds: Set<string>;
+  toggleFavorite: (gameId: string) => void;
 }
 
-const CategoryContext = createContext<CategoryContextType | undefined>(
-  undefined
-);
+const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
 
 interface CategoryProviderProps {
   children: ReactNode;
@@ -27,6 +27,26 @@ export const CategoryProvider: FC<CategoryProviderProps> = ({ children }) => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState<boolean>(false);
   const [activeProviders, setActiveProviders] = useState<string[]>([]);
+  const [favoriteGameIds, setFavoriteGameIds] = useState<Set<string>>(() => {
+    const storedFavorites = localStorage.getItem("favoriteGameIds");
+    return storedFavorites ? new Set(JSON.parse(storedFavorites)) : new Set();
+  });
+
+  const toggleFavorite = (gameId: string) => {
+    setFavoriteGameIds((prevFavorites) => {
+      const newFavorites = new Set(prevFavorites);
+      if (newFavorites.has(gameId)) {
+        newFavorites.delete(gameId);
+      } else {
+        newFavorites.add(gameId);
+      }
+      return newFavorites;
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteGameIds", JSON.stringify(Array.from(favoriteGameIds)));
+  }, [favoriteGameIds]);
 
   return (
     <CategoryContext.Provider
@@ -41,6 +61,8 @@ export const CategoryProvider: FC<CategoryProviderProps> = ({ children }) => {
         setIsFilterModalOpen,
         activeProviders,
         setActiveProviders,
+        favoriteGameIds,
+        toggleFavorite,
       }}
     >
       {children}

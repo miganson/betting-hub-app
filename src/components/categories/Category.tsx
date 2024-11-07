@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { GAME_LIST, GameDataItem } from "./GameList";
 import { useCategory } from "../contexts/CategoryContext";
+import { FaStar } from "react-icons/fa";
 
 const Category: React.FC = () => {
-  const { activeCategory, searchQuery, activeProviders } = useCategory();
+  const {
+    activeCategory,
+    searchQuery,
+    activeProviders,
+    favoriteGameIds,
+    toggleFavorite,
+  } = useCategory();
 
   const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>({});
 
   const filteredGames = Object.values(GAME_LIST).filter((game) => {
     const matchesCategory =
-      activeCategory === "Start" || game.category === activeCategory;
+      activeCategory === "Start" ||
+      (activeCategory === "Favorites" ? favoriteGameIds.has(game.id) : game.category === activeCategory);
 
     const matchesSearch =
       !searchQuery || game.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -44,6 +52,7 @@ const Category: React.FC = () => {
     >
       {filteredGames.map((game: GameDataItem) => {
         const isLoaded = imageLoaded[game.id] || false;
+        const isFavorited = favoriteGameIds.has(game.id);
 
         return (
           <div
@@ -52,6 +61,7 @@ const Category: React.FC = () => {
               overflow: "hidden",
               textAlign: "center",
               padding: "10px",
+              position: "relative", 
             }}
           >
             <div
@@ -102,7 +112,21 @@ const Category: React.FC = () => {
                   objectFit: "cover",
                 }}
               />
+              <FaStar
+                onClick={() => toggleFavorite(game.id)}
+                style={{
+                  position: "absolute",
+                  top: "8px",
+                  right: "8px",
+                  cursor: "pointer",
+                  color: isFavorited ? "yellow" : "gray",
+                  fontSize: "20px",
+                  zIndex: 1,
+                }}
+                aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+              />
             </div>
+            <div style={{ marginTop: "8px" }}>{game.name}</div>
           </div>
         );
       })}
