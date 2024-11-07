@@ -22,9 +22,8 @@ const Banner = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "8px",
         width: "100%",
-        padding: "16px 24px",
+        padding: "16px",
         marginTop: "56px",
       }}
     >
@@ -34,16 +33,25 @@ const Banner = () => {
             <div
               style={{
                 width: "100%",
-                height: "180px",
+                height: "300px",
                 borderRadius: "8px",
-                backgroundColor: "#f0f0f0",
-                backgroundImage: isLoaded ? `url(${BannerImage})` : "none",
-                backgroundSize: "cover",
-                backgroundPosition: "top",
-                transition: "background-image 0.3s ease-in-out",
+                overflow: "hidden", 
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              {!isLoaded && (
+              {isLoaded ? (
+                <img
+                  src={BannerImage}
+                  alt="Banner"
+                  style={{
+                    width: "100%",
+                    maxHeight: "300px",
+                    objectFit: "cover",
+                  }}
+                />
+              ) : (
                 <div
                   style={{
                     position: "absolute",
