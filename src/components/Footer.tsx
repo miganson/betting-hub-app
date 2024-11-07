@@ -9,7 +9,7 @@ import cashierIconUrl from "../assets/design-assets/svg-icons/CASHIER.svg";
 
 const FOOTER_LIST = [
   { title: "SPORTS", iconUrl: sportsIconUrl },
-  { title: "Favorites", iconUrl: faveIconUrl }, 
+  { title: "Favorites", iconUrl: faveIconUrl },
   { title: "INVITE", iconUrl: inviteIconUrl },
   { title: "CASINO LIVE", iconUrl: liveIconUrl },
   { title: "CASHIER", iconUrl: cashierIconUrl },
@@ -57,8 +57,8 @@ const Footer = () => {
                   <div
                     className="mb-1 d-flex align-items-center justify-content-center"
                     style={{
-                      width: "10vw",
-                      height: "10vw",
+                      width: "1rem",
+                      height: "1rem",
                       maxWidth: "50px",
                       maxHeight: "50px",
                       borderRadius: "50%",
@@ -72,8 +72,8 @@ const Footer = () => {
                       src={item.iconUrl}
                       alt={`${item.title} icon`}
                       style={{
-                        width: "6vw",
-                        height: "6vw",
+                        width: "1.5rem",
+                        height: "1.5rem",
                         maxWidth: "32px",
                         maxHeight: "32px",
                       }}
@@ -84,7 +84,7 @@ const Footer = () => {
                     style={{
                       color: isActive ? "rgb(0, 166, 255)" : "#6c757d",
                       fontWeight: isActive ? "bold" : "normal",
-                      fontSize: "2.5vw",
+                      fontSize: "12px",
                       maxWidth: "100%",
                       whiteSpace: "nowrap",
                     }}
