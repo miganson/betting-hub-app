@@ -2,21 +2,6 @@
 
 An online casino game portal built with React, featuring game categories, search functionality, and provider filters.
 
-## Table of Contents
-
-- [Description](#description)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Components Overview](#components-overview)
-- [Dependencies](#dependencies)
-- [Building for Production](#building-for-production)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Description
 
 This project is a React-based online casino game portal that allows users to browse games by category, search for games, and filter games by providers. It features a responsive design with components like headers, footers, banners, and category bars to enhance user experience.
@@ -29,47 +14,17 @@ This project is a React-based online casino game portal that allows users to bro
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 - **Sticky Header and Footer**: Easy navigation with fixed header and footer components.
 
-## Screenshots
-
-*Coming soon!*
-
 ## Prerequisites
 
-- **Node.js** (version 14 or above)
+- **Node.js**
 - **npm** or **yarn**
-
-## Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```bash
-   cd your-repo-name
-   ```
-
-3. **Install the dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-   or with yarn:
-
-   ```bash
-   yarn install
-   ```
 
 ## Usage
 
 To start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 or with yarn:
@@ -78,37 +33,8 @@ or with yarn:
 yarn start
 ```
 
-This will start the application on `http://localhost:3000` by default.
+This will start the application on `http://localhost:5173` by default.
 
-## Project Structure
-
-```
-src/
-├── assets/
-│   ├── design-assets/
-│   │   ├── game-icons/
-│   │   ├── logos/
-│   │   └── svg-icons/
-│   └── ...
-├── components/
-│   ├── Banner.tsx
-│   ├── CategoryBar.tsx
-│   ├── categories/
-│   │   └── Category.tsx
-│   ├── contexts/
-│   │   └── CategoryContext.tsx
-│   ├── Footer.tsx
-│   ├── GameProvider.tsx
-│   ├── Header.tsx
-│   ├── SearchComponent.tsx
-│   └── ...
-├── data/
-│   ├── GameList.tsx
-│   └── ProviderList.tsx
-├── App.tsx
-├── index.tsx
-└── ...
-```
 
 ## Components Overview
 
@@ -162,5 +88,3 @@ The project uses the following main dependencies:
 - **Bootstrap**: For responsive design and styling.
 - **React Context API**: For state management across components.
 ---
-
-Feel free to customize this README to better suit your project's needs. If you have any questions or need further assistance, please open an issue in the repository.
