@@ -68,8 +68,8 @@ const Category: React.FC = () => {
               style={{
                 position: "relative",
                 width: "100%",
-                paddingTop: "75%", 
-                overflow: "hidden",
+                paddingTop: "100%", 
+                overflow: "visible",
               }}
             >
               {!isLoaded && (
