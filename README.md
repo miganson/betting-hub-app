@@ -48,7 +48,7 @@ Displays the application header.
 
 ### Banner
 
-Shows a banner at the top of the application.
+Shows a banner at the top of the application. the image is loaded through a mock API.
 
 ### CategoryBar
 
@@ -56,7 +56,7 @@ Contains the categories for browsing games and includes a search component for s
 
 ### Category
 
-Displays the list of games filtered by the selected category, search query, and active providers.
+Displays the list of games filtered by the selected category, search query, and active providers. Images are loaded through a mock API.
 
 ### GameProvider
 
