@@ -8,6 +8,7 @@ import {
   CategoryProvider,
   useCategory,
 } from "./components/contexts/CategoryContext";
+import Footer from "./components/Footer";
 
 const AppContent: React.FC = () => {
   const { activeCategory } = useCategory();
@@ -19,6 +20,7 @@ const AppContent: React.FC = () => {
       <CategoryBar />
       {activeCategory && <Category />}
       <GameProvider />
+      <Footer />
     </>
   );
 };
